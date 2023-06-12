@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+
+// Function overloading
+double average(int a, int b) {
+    return (double)(a + b) / 2;
+}
+
+double average(double a, double b) {
+    return (a + b) / 2;
+}
+
+double average(int a, double b) {
+    return (double)(a + b) / 2;
+}
+
+double average(double a, int b) {
+    return (double)(a + b) / 2;
+}
+
+int main() {
+    int a = 10;
+    double b = 5.5;
+
+    cout << "Average of " << a << " and " << b << " is " << average(a, b) << endl;
+    cout << "Average of " << a << " and " << a << " is " << average(a, a) << endl;
+    cout << "Average of " << b << " and " << b << " is " << average(b, b) << endl;
+    cout << "Average of " << b << " and " << a << " is " << average(b, a) << endl;
+
+    return 0;
+}
