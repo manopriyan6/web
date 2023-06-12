@@ -1,0 +1,78 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Person {
+public:
+  string name;
+  int age;
+
+  Person(string name, int age) : name(name), age(age) {}
+
+  virtual void print_info() = 0;
+};
+
+class Student : public Person {
+public:
+  double gpa;
+
+  Student(string name, int age, double gpa) : Person(name, age), gpa(gpa) {}
+
+  void print_info() override {
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+    cout << "GPA: " << gpa << endl;
+  }
+};
+
+class Account : public Person {
+public:
+  double balance;
+
+  Account(string name, int age, double balance) : Person(name, age), balance(balance) {}
+
+  void print_info() override {
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+    cout << "Balance: " << balance << endl;
+  }
+};
+
+class Employee : public Person {
+public:
+  double salary;
+
+  Employee(string name, int age, double salary) : Person(name, age), salary(salary) {}
+
+  void print_info() override {
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+    cout << "Salary: " << salary << endl;
+  }
+};
+
+int main() {
+  vector<Person*> records;
+
+  // Create a student
+  records.push_back(new Student("John Doe", 18, 3.9));
+
+  // Create an account
+  records.push_back(new Account("Jane Doe", 21, 1000));
+
+  // Create an employee
+  records.push_back(new Employee("Bill Smith", 30, 50000));
+
+  // Print the information for each person
+  for (Person* record : records) {
+    record->print_info();
+  }
+
+  // Delete the records
+  for (Person* record : records) {
+    delete record;
+  }
+
+  return 0;
+}
