@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class: Person
+class Person {
+protected:
+    string name;
+
+public:
+    void setName(const string& n) {
+        name = n;
+    }
+
+    void displayInfo() {
+        cout << "Name: " << name << endl;
+    }
+};
+
+// Derived class: Employee
+class Employee : public Person {
+private:
+    int empId;
+    double salary;
+
+public:
+    void setEmployeeInfo(int id, double sal) {
+        empId = id;
+        salary = sal;
+    }
+
+    void displayInfo() {
+        Person::displayInfo();
+        cout << "Employee ID: " << empId << endl;
+        cout << "Salary: $" << salary << endl;
+    }
+};
+
+// Derived class: Account
+class Account : public Person {
+protected:
+    string accountNumber;
+
+public:
+    void setAccountNumber(const string& num) {
+        accountNumber = num;
+    }
+
+    void displayInfo() {
+        Person::displayInfo();
+        cout << "Account Number: " << accountNumber << endl;
+    }
+};
+
+// Derived class: Student
+class Student : public Person {
+private:
+    int rollNumber;
+    string course;
+
+public:
+    void setStudentInfo(int roll, const string& crs) {
+        rollNumber = roll;
+        course = crs;
+    }
+
+    void displayInfo() {
+        Person::displayInfo();
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Course: " << course << endl;
+    }
+};
+
+int main() {
+    Employee emp;
+    emp.setName("John Doe");
+    emp.setEmployeeInfo(12345, 5000.0);
+    emp.displayInfo();
+
+    Account acc;
+    acc.setName("Jane Smith");
+    acc.setAccountNumber("1234567890");
+    acc.displayInfo();
+
+    Student stu;
+    stu.setName("Alice Johnson");
+    stu.setStudentInfo(1001, "Computer Science");
+    stu.displayInfo();
+
+    return 0;
+}
