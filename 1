@@ -1,0 +1,119 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+  public:
+    string name;
+    int age;
+    string address;
+    string email;
+    string phone;
+    
+    void readDetails() {
+        cout << "Enter name: ";
+        getline(cin, name);
+        cout << "Enter age: ";
+        cin >> age;
+        cin.ignore();
+        cout << "Enter address: ";
+        getline(cin, address);
+        cout << "Enter email: ";
+        getline(cin, email);
+        cout << "Enter phone number: ";
+        getline(cin, phone);
+    }
+    
+    void displayDetails() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Address: " << address << endl;
+        cout << "Email: " << email << endl;
+        cout << "Phone: " << phone << endl;
+    }
+};
+
+class Student : public Person {
+  public:
+    string studentID;
+    string program;
+    
+    void readDetails() {
+        Person::readDetails();
+        cout << "Enter student ID: ";
+        getline(cin, studentID);
+        cout << "Enter program: ";
+        getline(cin, program);
+    }
+    
+    void displayDetails() {
+        Person::displayDetails();
+        cout << "Student ID: " << studentID << endl;
+        cout << "Program: " << program << endl;
+    }
+};
+
+class Account {
+  public:
+    string accountNumber;
+    string accountType;
+    float balance;
+    
+    void readDetails() {
+        cout << "Enter account number: ";
+        getline(cin, accountNumber);
+        cout << "Enter account type: ";
+        getline(cin, accountType);
+        cout << "Enter balance: ";
+        cin >> balance;
+        cin.ignore();
+    }
+    
+    void displayDetails() {
+        cout << "Account number: " << accountNumber << endl;
+        cout << "Account type: " << accountType << endl;
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+class Employee : public Person {
+  public:
+    string employeeID;
+    string department;
+    Account account;
+    
+    void readDetails() {
+        Person::readDetails();
+        cout << "Enter employee ID: ";
+        getline(cin, employeeID);
+        cout << "Enter department: ";
+        getline(cin, department);
+        cout << "Enter account details:" << endl;
+        account.readDetails();
+    }
+    
+    void displayDetails() {
+        Person::displayDetails();
+        cout << "Employee ID: " << employeeID << endl;
+        cout << "Department: " << department << endl;
+        cout << "Account details:" << endl;
+        account.displayDetails();
+    }
+};
+
+int main() {
+    Student myStudent;
+    cout << "Enter student details:" << endl;
+    myStudent.readDetails();
+    cout << endl << "Details entered:" << endl;
+    myStudent.displayDetails();
+    
+    cout << endl;
+    
+    Employee myEmployee;
+    cout << "Enter employee details:" << endl;
+    myEmployee.readDetails();
+    cout << endl << "Details entered:" << endl;
+    myEmployee.displayDetails();
+    
+    return 0;
+}
