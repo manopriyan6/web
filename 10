@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <typename T>
+class Stack {
+public:
+  Stack() {}
+
+  void push(T item) {
+    stack.push_back(item);
+  }
+
+  T pop() {
+    T item = stack.back();
+    stack.pop_back();
+    return item;
+  }
+
+  bool empty() {
+    return stack.empty();
+  }
+
+  int size() {
+    return stack.size();
+  }
+
+private:
+  vector<T> stack;
+};
+
+int main() {
+  Stack<int> s;
+
+  s.push(10);
+  s.push(20);
+  s.push(30);
+
+  cout << "The top element is: " << s.pop() << endl;
+  cout << "The size of the stack is: " << s.size() << endl;
+
+  s.pop();
+
+  cout << "The top element is now: " << s.pop() << endl;
+
+  return 0;
+}
