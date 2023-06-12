@@ -1,0 +1,43 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+void copyFile(const string& sourceFile, const string& destinationFile) {
+    ifstream inFile(sourceFile);
+    ofstream outFile(destinationFile, ios::app);
+
+    if (!inFile) {
+        cout << "Error opening source file." << endl;
+        return;
+    }
+
+    if (!outFile) {
+        cout << "Error opening destination file." << endl;
+        return;
+    }
+
+    string line;
+    while (getline(inFile, line)) {
+        outFile << line << endl;
+    }
+
+    cout << "File copied successfully!" << endl;
+
+    inFile.close();
+    outFile.close();
+}
+
+int main() {
+    string sourceFile, destinationFile;
+    cout << "Enter the name of the source file: ";
+    getline(cin, sourceFile);
+
+    cout << "Enter the name of the destination file: ";
+    getline(cin, destinationFile);
+
+    copyFile(sourceFile, destinationFile);
+
+    return 0;
+}
