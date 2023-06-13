@@ -1,0 +1,3 @@
+# Exam
+for c++ practicas
+🤟🤏🫵
